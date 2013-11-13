@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using Csharp.Excepciones;
 
 namespace Csharp
 {
@@ -93,35 +94,6 @@ namespace Csharp
             }
         }
 
-        private void GenerarFichasAleatorias()
-        {
-            //Se crean todas las fichas posibles
-            var fichasPosibles = new List<Ficha>();
-            for (var i = 0; i < 7; i++)
-            {
-                for (var j = i; j < 7; j++)
-                {
-                    fichasPosibles.Add(new Ficha(i, j));
-                }
-            }
-            //Se organizan las fichas aleatoriamente
-            fichasPosibles = fichasPosibles.OrderBy(a => Guid.NewGuid()).ToList();
-
-            for (var i = 0; i < 4; i++)
-            {
-                var equipo = i % 2 == 0 ? 0 : 1;
-                var jugador = new Jugador
-                {
-                    Equipo = (Frentes)equipo
-                };
-                for (var j = 0; j < 7; j++)
-                {
-                    jugador.Fichas.Add(fichasPosibles[i * 7 + j]);
-                }
-                Jugadores.Add(jugador);
-            }
-        }
-
         public void JugarFicha(int numeroJugador, Ficha ficha, int? ladoPreferido = null)
         {
             if (numeroJugador >= 0 && numeroJugador < 4)
@@ -153,7 +125,7 @@ namespace Csharp
             {
                 if (Fichas.Any(f => f.Valor.Equals(ficha.Valor)))
                 {
-                    throw new ArgumentException("No se puede jugar una ficha repetida");
+                    throw new FichaRepetidaException();
                 }
 
                 //Se revisa si el jugador tiene intencion de un lado especifico
@@ -178,22 +150,19 @@ namespace Csharp
                 }
                 else
                 {
-                    throw new Exception("Jugada Invalida!");
+                    throw new JugadaInvalidaException();
                 }
 
             }
         }
 
-        public string DibujarTablero()
+        public void DibujarTablero()
         {
             foreach (var f in Fichas)
             {
                 Trace.Write(f.Valor);
             }
-
             Trace.WriteLine("");
-
-            return "";
         }
 
         public void PasarTurno(Jugador jugador)
@@ -222,6 +191,35 @@ namespace Csharp
         #endregion
 
         #region Métodos Privados
+
+        private void GenerarFichasAleatorias()
+        {
+            //Se crean todas las fichas posibles
+            var fichasPosibles = new List<Ficha>();
+            for (var i = 0; i < 7; i++)
+            {
+                for (var j = i; j < 7; j++)
+                {
+                    fichasPosibles.Add(new Ficha(i, j));
+                }
+            }
+            //Se organizan las fichas aleatoriamente
+            fichasPosibles = fichasPosibles.OrderBy(a => Guid.NewGuid()).ToList();
+
+            for (var i = 0; i < 4; i++)
+            {
+                var equipo = i % 2 == 0 ? 0 : 1;
+                var jugador = new Jugador
+                {
+                    Equipo = (Frentes)equipo
+                };
+                for (var j = 0; j < 7; j++)
+                {
+                    jugador.Fichas.Add(fichasPosibles[i * 7 + j]);
+                }
+                Jugadores.Add(jugador);
+            }
+        }
 
         private void ProcesarJugada(Jugador jugador, Ficha ficha, bool insertarEnExtremoIzq = false)
         {

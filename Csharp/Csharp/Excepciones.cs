@@ -16,5 +16,16 @@ namespace Csharp.Excepciones
     }
 
     public class JugadorIntentoJugarEnTurnoErroneoException : Exception
-    {}
+    {
+        
+    }
+
+    public class JugadaInvalidaException : Exception
+    {
+    }
+
+    public class FichaRepetidaException : Exception
+    {
+        
+    }
 }

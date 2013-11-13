@@ -176,15 +176,13 @@ namespace Csharp.Tests
         }
 
         [TestMethod]
-        [ExpectedException(typeof(Exception))]
+        [ExpectedException(typeof(JugadaInvalidaException))]
         public void SoloSePuedeJugarMovidasValidas()
         {
             var juego = InicializarJuego();
 
             juego.JugarFicha(0, new Ficha(6, 6));
             juego.JugarFicha(1, new Ficha(4, 3));
-
-            Assert.IsTrue(juego.Fichas.Count == 1);
         }
 
         [TestMethod]
@@ -354,7 +352,7 @@ namespace Csharp.Tests
         }
 
         [TestMethod]
-        [ExpectedException(typeof(Excepciones.JuegoNoComenzoConDobleSeisException))]
+        [ExpectedException(typeof(JuegoNoComenzoConDobleSeisException))]
         public void LaPrimeraPartidaDebeComenzarConDobleSeis()
         {
             var juego = InicializarJuego(0);
@@ -454,3 +452,4 @@ namespace Csharp.Tests
         }
     }
 }
+
