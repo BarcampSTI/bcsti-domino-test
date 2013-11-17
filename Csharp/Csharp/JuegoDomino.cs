@@ -203,7 +203,9 @@ namespace Csharp
                     fichasPosibles.Add(new Ficha(i, j));
                 }
             }
+            
             //Se organizan las fichas aleatoriamente
+            //Aqui estoy usando linq, pero se puede usar este algoritmo tambien: http://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle
             fichasPosibles = fichasPosibles.OrderBy(a => Guid.NewGuid()).ToList();
 
             for (var i = 0; i < 4; i++)
