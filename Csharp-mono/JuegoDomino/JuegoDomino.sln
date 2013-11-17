@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JuegoDomino", "JuegoDomino\JuegoDomino.csproj", "{C3ACAC83-7768-4278-8263-BF19A416CDBC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JuegoDomino.Tests", "JuegoDomino.Tests\JuegoDomino.Tests.csproj", "{7DDE99D2-2F84-479F-8BD6-1D0463A005C6}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x86 = Debug|x86
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7DDE99D2-2F84-479F-8BD6-1D0463A005C6}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{7DDE99D2-2F84-479F-8BD6-1D0463A005C6}.Debug|x86.Build.0 = Debug|Any CPU
+		{7DDE99D2-2F84-479F-8BD6-1D0463A005C6}.Release|x86.ActiveCfg = Release|Any CPU
+		{7DDE99D2-2F84-479F-8BD6-1D0463A005C6}.Release|x86.Build.0 = Release|Any CPU
+		{C3ACAC83-7768-4278-8263-BF19A416CDBC}.Debug|x86.ActiveCfg = Debug|x86
+		{C3ACAC83-7768-4278-8263-BF19A416CDBC}.Debug|x86.Build.0 = Debug|x86
+		{C3ACAC83-7768-4278-8263-BF19A416CDBC}.Release|x86.ActiveCfg = Release|x86
+		{C3ACAC83-7768-4278-8263-BF19A416CDBC}.Release|x86.Build.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		StartupItem = JuegoDomino\JuegoDomino.csproj
+	EndGlobalSection
+EndGlobal
